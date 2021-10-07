@@ -1,0 +1,9 @@
+[2021-10-0117:00:36] [ INFO ] [OdontologoController:40] registrando un odontologo en el sistema
+[2021-10-0117:01:20] [ INFO ] [PacienteController:41] registrando un paciente en el sistema
+[2021-10-0117:01:45] [ INFO ] [TurnoController:40] registrando un paciente en el sistema
+[2021-10-0117:02:25] [ INFO ] [OdontologoController:49] Trayendo un odontologo del sistema
+[2021-10-0117:02:34] [ INFO ] [OdontologoController:61] Se actualizaron los datos del odontologo
+[2021-10-0117:17:13] [ DEBUG] [PacienteController:74] Eliminando un paciente
+
+//logueo de excepciones
+[2021-10-0117:17:14] [ ERROR] [GlobalExceptionHandler:18] Error del tipo could not prepare statement; SQL [select paciente0_.id as id1_2_0_, paciente0_.apellido as apellido2_2_0_, paciente0_.dni as dni3_2_0_, paciente0_.id_domicilio as id_domic6_2_0_, paciente0_.fecha_ingreso as fecha_in4_2_0_, paciente0_.nombre as nombre5_2_0_, domicilio1_.id as id1_0_1_, domicilio1_.calle as calle2_0_1_, domicilio1_.localidad as localida3_0_1_, domicilio1_.numero as numero4_0_1_, domicilio1_.provincia as provinci5_0_1_ from paciente paciente0_ inner join domicilio domicilio1_ on paciente0_.id_domicilio=domicilio1_.id where paciente0_.id=?]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement

@@ -1,9 +1,13 @@
 package com.example.clinicaOdontologica.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table
@@ -12,72 +16,35 @@ public class Paciente {
     @Id
     @SequenceGenerator(name = "paciente_sequence", sequenceName = "paciente_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paciente_sequence")
+    @Getter
     private Integer id;
+    @Getter @Setter
     private String nombre;
+    @Getter @Setter
     private String apellido;
+    @Getter @Setter
     private String dni;
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date fechaIngreso;
+    @Getter @Setter
+    private String fechaIngreso;
 
-
+    @Getter @Setter
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="id_domicilio", referencedColumnName = "id")
+    @JoinColumn(name="id_domicilio", nullable = false, referencedColumnName = "id")
     private Domicilio domicilio;
 
+    @Getter @Setter
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"paciente"})
+    private Set<Turno> turnos;
 
     public Paciente() {
     }
 
-    public Paciente(String nombre, String apellido, String dni, Date fechaIngreso, Domicilio domicilio) {
+    public Paciente(String nombre, String apellido, String dni, String fechaIngreso, Domicilio domicilio) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.fechaIngreso = fechaIngreso;
-        this.domicilio = new Domicilio("Alberdi", "1500", "rosario", "santa fe");
-    }
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public Date getFechaIngreso() {
-        return fechaIngreso;
-    }
-
-    public void setFechaIngreso(Date fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
-
-    public Domicilio getDomicilio() {
-        return domicilio;
-    }
-
-    public void setDomicilio(Domicilio domicilio) {
         this.domicilio = domicilio;
     }
 

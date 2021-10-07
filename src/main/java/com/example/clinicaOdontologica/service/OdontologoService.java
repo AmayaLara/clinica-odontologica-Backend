@@ -12,5 +12,4 @@ public interface OdontologoService {
     List<Odontologo> buscarTodos();
     void eliminar(Integer id);
     Odontologo actualizar(Odontologo odontologo);
-
 }

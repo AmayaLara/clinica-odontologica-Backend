@@ -1,7 +1,6 @@
 package com.example.clinicaOdontologica.service.Impl;
 
 import com.example.clinicaOdontologica.model.Odontologo;
-import com.example.clinicaOdontologica.repository.DomicilioRepository;
 import com.example.clinicaOdontologica.repository.OdontologoRepository;
 import com.example.clinicaOdontologica.service.OdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,7 @@ public class OdontologoServiceImpl implements OdontologoService {
 
     @Override
     public Odontologo actualizar(Odontologo odontologo) {
-       Optional<Odontologo> odontologo1 = buscar(odontologo.getId());
+        Optional<Odontologo> odontologo1 = buscar(odontologo.getId());
 
         odontologo1.get().setMatricula(odontologo.getMatricula());
         odontologo1.get().setNombre(odontologo.getNombre());

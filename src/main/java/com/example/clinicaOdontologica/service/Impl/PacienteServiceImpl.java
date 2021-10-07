@@ -3,6 +3,7 @@ package com.example.clinicaOdontologica.service.Impl;
 import com.example.clinicaOdontologica.model.Paciente;
 import com.example.clinicaOdontologica.repository.PacienteRepository;
 import com.example.clinicaOdontologica.service.PacienteService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,11 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     public Optional<Paciente> buscar(Integer id) {
-        return pacienteRepository.findById(id);
+        Optional<Paciente> paciente = pacienteRepository.findById(id);
+        if(paciente.get().getId() != null){
+            return paciente;
+        }
+        return null;
     }
 
     @Override
